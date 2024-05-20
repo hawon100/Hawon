@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON 업로드</title>
+</head>
+<body>
+    <h1>JSON 파일 업로드</h1>
+    
+    <!-- 파일 입력 요소 -->
+    <input type="file" id="jsonFileInput" accept=".json">
+
+    <!-- JSON 내용을 표시할 영역 -->
+    <pre id="jsonDisplay"></pre>
+
+    <script>
+        // 파일 입력 요소 선택
+        const fileInput = document.getElementById('jsonFileInput');
+        const jsonDisplay = document.getElementById('jsonDisplay');
+
+        // 파일이 선택되었을 때 이벤트 핸들러
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0]; // 선택된 파일
+            if (file) {
+                const reader = new FileReader();
+
+                // 파일이 로드되었을 때
+                reader.onload = function(event) {
+                    try {
+                        // JSON 파싱
+                        const jsonData = JSON.parse(event.target.result);
+
+                        // JSON 데이터를 문자열로 변환하여 표시
+                        jsonDisplay.textContent = JSON.stringify(jsonData, null, 2);
+                    } catch (error) {
+                        // JSON 파싱 실패 시 에러 메시지 출력
+                        jsonDisplay.textContent = 'JSON 파싱 실패: ' + error.message;
+                    }
+                };
+
+                // 파일을 텍스트로 읽기
+                reader.readAsText(file);
+            }
+        });
+    </script>
+</body>
+</html>

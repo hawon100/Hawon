@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ObjectPool</title>
+    <link rel="stylesheet" href="../../css/prism.css">
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -14,8 +17,8 @@
     <footer>
         <div class="container">
             <P>ObjectPool</P>
-            <pre>
-                <code>
+            <pre class="line-numbers">
+<code class="language-cpp">
 [System.Serializable]
 public class ObjectInfo
 {
@@ -62,24 +65,26 @@ public class ObjectPool : MonoBehaviour
         return t_queue;
     }
 }
-                </code>
+</code>
             </pre>
             <pre>
 사용법
 
 활성화 시킬 때
-                <code>
+                <code class="language-cpp">
 ObjectPool.Instance._Queue.Dequeue();
 gameObject.SetActive(true);
                 </code>
 
 비활성화 시킬 때
-                <code>
+                <code class="language-cpp"x >
 ObjectPool.Instance._Queue.Enqueue(gameObject);
 gameObject.SetActive(false);
                 </code>
             </pre>
         </div>
     </footer>
+    <script src="../../js/prism.js"></script>
 </body>
+
 </html>
